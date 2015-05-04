@@ -4,52 +4,44 @@
 
 #include "ofMain.h"
 
-
 class ofApp: public ofBaseApp
 {
 public:
 
 #line 1 "Quiz_2_1_1-2"
-ofPolyline polyline;
-ofPolyline movePolyline;
 
-void setup() {
-    //Set the size of the window "aquatic plant"
-    ofSetWindowShape(500, 500); 
-    //set the position of the 
-    for (int i=250; i>=-200; i-=8) polyline.addVertex(ofVec2f(0,i));
-    movePolyline = polyline;
+ofPolyline polyline;        //set up a polyline
+ofPolyline movePolyline;        //set up a polyline
+
+void setup() {      //to define the basic environment conditions before the program starts
+    ofSetWindowShape(500, 500);     //Set the size of the window "aquatic plant"
+    for (int i=250; i>=-200; i-=8) polyline.addVertex(ofVec2f(0,i));        //set the position of the
+    movePolyline = polyline;        //make the polyline equal to movepolyline
 }
 
-void draw() {
-    // Set the background color
-    ofBackground(127);
-    //Set the the color of "aquatic plant"
-    ofSetColor(77,204,0);
+void draw() {       //to excute the code
+    ofBackground(127);      // Set the background color
+    ofSetColor(77,204,0);       //Set the the color of "aquatic plant"
     
-    // To create the horizontal line on each point of tangency
-    for (int i=0; i<polyline.size(); i++) {
+    for (int i=0; i<polyline.size(); i++) {     // To create the horizontal line on each point of tangency
         ofVec3f normal = polyline.getNormalAtIndexInterpolated(i); 
         
-        // Create the Vertical Line
-        ofPushMatrix();
-            ofTranslate(250,250);
+        ofPushMatrix();     // Create the Vertical Line
+            ofTranslate(250,250);       //the parameter of translate
             movePolyline.draw();        
-        ofPopMatrix();
+        ofPopMatrix();      //finish the push matrix
     
-        // Create a lot of horizontal line 
-        ofPushMatrix();
-            ofTranslate(250, 250);
+        ofPushMatrix();     // Create a lot of horizontal line 
+            ofTranslate(250, 250);      //the parameter of translate
             ofLine(movePolyline[i]-normal*(polyline.size() -i), movePolyline[i]+normal*(polyline.size() -i));
-        ofPopMatrix();
+        ofPopMatrix();      //finish the push matrix
     }
 }
-
 };
 
-int main()
+int main()      //hand out "main"
 {
-    ofSetupOpenGL(320, 240, OF_WINDOW);
-    ofRunApp(new ofApp());
+    ofSetupOpenGL(320, 240, OF_WINDOW);     //set up the GL
+    ofRunApp(new ofApp());      //run the project
 }
 
