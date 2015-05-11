@@ -1,4 +1,5 @@
-# seaweed
-This is a sketch of a green Seaweed
+# HW_Seaweed_Leo
 
-![Seaweed screedshot](assets/Seaweed.png)
+My project does a moving green Seaweed.
+
+![This is the screen shot of my project](assets/Seaweed.png)
